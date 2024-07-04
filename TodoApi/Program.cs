@@ -11,7 +11,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddScoped<IPostService, PostsService>();
 // inyectando la factoryClient que coloca http y definimos la URL, colocando la implementacion de IPostService
 builder.Services.AddHttpClient<IPostService, PostsService>(param =>{
-    param.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/posts");
+    param.BaseAddress = new Uri(builder.Configuration["BaseUrlPosts"]);
 });
 
 builder.Services.AddControllers();
